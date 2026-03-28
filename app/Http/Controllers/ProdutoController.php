@@ -72,7 +72,16 @@ class ProdutoController extends Controller
     public function update(ProdutoRequest $request, string $id)
     {
         $produto = Produto::with('categoria')->findOrFail($id);
-        $produto->update($request->validated());
+        $data = $request->validated();
+        if ($request->hasFile('imagem')) {
+            if ($produto->imagem) {
+                Storage::disk('public')->delete($produto->imagem);
+            }
+            $data['imagem'] = $request->file('imagem')->store('produtos', 'public');
+        }
+
+        $produto->update($data);
+
         return redirect()->route('produtos.index')->with('success', 'Produto atualizado com sucesso!');
     }
 
