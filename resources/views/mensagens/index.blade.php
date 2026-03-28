@@ -65,9 +65,11 @@
                         </p>
 
                         {{-- Corpo da Mensagem --}}
-                        <p class="text-break mb-0">
+                        <p class="text-break mb-0 pb-1">
                             {{ $mensagem->mensagem }}
                         </p>
+
+                        <x-button route="fale-conosco.responder" id="{{ $mensagem->id }}" text="Responder"/>
 
                     </div>
 

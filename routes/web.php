@@ -36,6 +36,7 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::resource('produtos', ProdutoController::class)->except('index', 'show');
     Route::resource('clientes', ClienteController::class)->only('index', 'show', 'destroy');
     Route::resource('fale-conosco', MensagemController::class)->only('index', 'destroy');
+    Route::get('/fale-conosco/responder/{mensagem}', [MensagemController::class, 'responder'])->name('fale-conosco.responder');
 });
 Route::resource('produtos', ProdutoController::class)->only('index', 'show');
 Route::resource('fale-conosco', MensagemController::class)->only('create');

@@ -76,4 +76,10 @@ class MensagemController extends Controller
         Mensagem::destroy($id);
         return redirect()->route('mensagens.index')->with('success', 'Mensagem excluída com sucesso!');
     }
+
+    public function responder(Mensagem $mensagem)
+    {
+        // $mensagem = Mensagem::with('cliente')->findOrFail($id);
+        return view('mensagens.resposta', compact('mensagem'));
+    }
 }
