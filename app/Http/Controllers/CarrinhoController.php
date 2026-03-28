@@ -22,7 +22,7 @@ class CarrinhoController extends Controller
         $compra = Compra::create([
             'cliente_id' => Auth::user()->cliente->id, // <-- CORRIGIDO: Usa o ID do usuário logado
             'valor_total' => $produto->preco, 
-            // 'data_compra' => now(),
+            'data_compra' => now(),
             'status' => 'Processando', 
         ]);
 

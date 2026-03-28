@@ -17,6 +17,7 @@ class Compra extends Model
         'cliente_id', // JÁ CORRIGIDO
         'valor_total',
         'status',
+        'data_compra'
     ];
 
     // Informa ao Laravel para converter data_compra para um objeto datetime
